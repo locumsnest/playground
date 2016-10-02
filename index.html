@@ -43,6 +43,23 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="col-lg-5 control-label">Pick GPU..</label>
+            <div class="col-lg-7">
+              <select ng-model="userChoice" ng-change="updateGrade()" class="form-control">
+                <option value="">Choose Your GPU</option>
+                <option value="FY1">Foundation Year 1</option>
+                <option value="FY2">Foundation Year 2</option>
+                <option value="StR1">Specialist Registrar 1</option>
+                <option value="StR2">Specialist Registrar 2</option>
+                <option value="StR3">Specialist Registrar 3</option>
+                <option value="StR4">Specialist Registrar 4</option>
+                <option value="StR5">Specialist Registrar 5</option>
+                <option value="StR6">Specialist Registrar 6</option>
+                <option value="Consultant">Consultant</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
             <label class="col-lg-5 control-label">Locum Hours Per Week</label>
             <div class="col-lg-7">
               <input 
@@ -144,9 +161,9 @@
         $scope.earnings.year = $scope.earnings.week * 52.;
       };
 
-      $scope.updateUserHash = function() {
+      $scope.updateGrade = function() {
         var value = $scope.userChoice;
-        $scope.userHash = value;
+        $scope.grade = value;
         $scope.computeProfits();
       };
     }
