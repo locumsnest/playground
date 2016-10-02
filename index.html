@@ -96,11 +96,12 @@
              <tr>
               <td>Extra desired hours</td>
               <td ng-bind="earnings.extraHours | number:2"></td>
+
             </tr>
             
             <tr>
               <td>Current Monthly Net (GBP) </td>
-              <td ng-bind="monthlySalary"></td>
+              <td ng-bind="monthlySalary | number:2"></td>
             </tr>
             
         
@@ -146,7 +147,7 @@
         $scope.earnings.week = $scope.earnings.hour * $scope.hoursPerWeek;
         $scope.earnings.month = $scope.earnings.week * 52. / 12.;
         $scope.earnings.year = $scope.earnings.week * 52.;
-        $scope.earnings.extraHours = $scope.maxHoursPerWeek - $scope.hoursPerWeek
+        $scope.earnings.extraHours = $scope.maxHoursPerWeek - $scope.hoursPerWeek;
       };
 
       $scope.updateGrade = function() {
