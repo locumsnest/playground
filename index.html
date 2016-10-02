@@ -119,7 +119,7 @@
             </tr>
             <tr>
               <td>Projected yearly income boost (GBP)</td>
-              <td ng-bind="earnings.extaIncomeYear | number:2"></td>
+              <td ng-bind="earnings.extraIncomeYear | number:2"></td>
             </tr>
             
             
@@ -170,7 +170,7 @@
         $scope.earnings.locumEarningsWAgency = $scope.earnings.locumEarnings * (1.0-$scope.agencyPercentage);
         $scope.earnings.monthlyLA = $scope.earnings.month+$scope.earnings.locumEarningsWAgency;
         $scope.earnings.monthlyL = $scope.earnings.month+$scope.earnings.locumEarnings;
-        $scope.earnings.extraIncomeYear = $scope.earnings.locumEarnings * 12.;
+        $scope.earnings.extraIncomeYear =  $scope.earnings.locumEarnings * 12.;
       };
 
       $scope.updateGrade = function() {
