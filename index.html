@@ -32,17 +32,6 @@
 
         <form ng-submit="computeProfits()" class="form-horizontal">
           <div class="form-group">
-            <label class="col-lg-5 control-label">Monthly salary (net)</label>
-            <div class="col-lg-7">
-              <input 
-                type="text" 
-                class="form-control" 
-                ng-model="monthlySalary" 
-                placeholder="Month salary (net in GBP)"
-                ng-change="computeProfits()"/>
-            </div>
-          </div>
-          <div class="form-group">
             <label class="col-lg-5 control-label">Grade</label>
             <div class="col-lg-7">
               <select ng-model="userChoice" ng-change="updateGrade()" class="form-control">
@@ -60,7 +49,18 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-lg-5 control-label">Locum Hours Per Week</label>
+            <label class="col-lg-5 control-label">Monthly salary (net)</label>
+            <div class="col-lg-7">
+              <input 
+                type="text" 
+                class="form-control" 
+                ng-model="monthlySalary" 
+                placeholder="Month salary (net in GBP)"
+                ng-change="computeProfits()"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-5 control-label">Current hours per week</label>
             <div class="col-lg-7">
               <input 
                 type="text" 
@@ -70,21 +70,22 @@
                 ng-change="computeProfits()"/>
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-lg-5 control-label">Agency percentage</label>
+           <div class="form-group">
+            <label class="col-lg-5 control-label">Max desired hours per week</label>
             <div class="col-lg-7">
               <input 
                 type="text" 
                 class="form-control" 
-                ng-model="agencyPercentage" 
-                placeholder="Agency Percentage"
+                ng-model="maxHoursPerWeek" 
+                placeholder="Hours Per Week"
                 ng-change="computeProfits()"/>
             </div>
           </div>
+          
         </form>
       </div>
       <div class="col-lg-6">
-        <h2>Savings </h2>
+        <h2>Summary </h2>
 
         <table class="table table-striped">
           <thead>
@@ -98,30 +99,17 @@
               <td>Grade</td>
               <td ng-bind="grade"></td>
             </tr>
-            <tr>
-              <td>Minute</td>
-              <td ng-bind="earnings.min | number:2"></td>
+             <tr>
+              <td>Extra desired hours</td>
+              <td ng-bind="salary.earnings.extraHours"|number:2></td>
             </tr>
+            
             <tr>
-              <td>Hour</td>
-              <td ng-bind="earnings.hour | number:2"></td>
+              <td>Current Monthly Net (GBP) </td>
+              <td ng-bind="monthly"></td>
             </tr>
-            <tr>
-              <td>Day</td>
-              <td ng-bind="earnings.day | number:2"></td>
-            </tr>
-            <tr>
-              <td>Week</td>
-              <td ng-bind="earnings.week | number:2"></td>
-            </tr>
-            <tr>
-              <td>Month</td>
-              <td ng-bind="earnings.month | number:2"></td>
-            </tr>
-            <tr>
-              <td>Year</td>
-              <td ng-bind="earnings.year | number:2"></td>
-            </tr>
+            
+        
           </tbody>
         </table>
       </div>
@@ -155,6 +143,7 @@
       $scope.earnings = {};
 
       $scope.computeProfits = function() {
+        $scope.agencyPercentage = 0.15
         var userRatio = $scope.monthlySalary * 1/40. * 12/52. * $scope.agencyPercentage;
         var savingsPerMin = userRatio * 1 / 60.;
         $scope.earnings.min = savingsPerMin;
@@ -163,6 +152,7 @@
         $scope.earnings.week = $scope.earnings.hour * $scope.hoursPerWeek;
         $scope.earnings.month = $scope.earnings.week * 52. / 12.;
         $scope.earnings.year = $scope.earnings.week * 52.;
+        $scope.earnings.extraHours = $scope.maxHoursPerWeek - $scope.hoursPerWeek
       };
 
       $scope.updateGrade = function() {
