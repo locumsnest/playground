@@ -167,7 +167,7 @@
         $scope.earnings.year = $scope.earnings.week * 52.;
         $scope.earnings.extraHours = $scope.maxHoursPerWeek - $scope.hoursPerWeek;
         $scope.earnings.locumEarnings = $scope.monthlySalary * $scope.earnings.extraHours / $scope.hoursPerWeek;
-        $scope.earnings.locumEarningsWAgency = $scope.earnings.locumEarnings * (1-$scope.agencyPercentage);
+        $scope.earnings.locumEarningsWAgency = $scope.earnings.locumEarnings * (1.0-$scope.agencyPercentage);
         $scope.earnings.monthlyLA = $scope.monthlySalary + $scope.earnings.locumEarningsWAgency;
         $scope.earnings.monthlyL = $scope.monthlySalary + $scope.earnings.locumEarnings;
         $scope.earnings.extraIncomeYear = $scope.earnings.locumEarnings * 12.;
