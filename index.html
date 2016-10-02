@@ -3,9 +3,9 @@
   
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
-  <meta name="title" content="Locum Savings Calculator 1">
-  <meta name="keywords" content="locum savings calculator">
-  <meta name="description" content="Calculating savings in an agency free world">
+  <meta name="title" content="Salary Diagnostics Tool">
+  <meta name="keywords" content="salary diagnostics NHS locum">
+  <meta name="description" content="Salary Diagnostics...">
 
   <link rel="stylesheet" href="http://bootswatch.com/superhero/bootstrap.min.css">
 
@@ -16,10 +16,10 @@
   </style>
 </head>
 
-<body ng-controller="LocumSavingsCtrl" ng-cloak>
+<body ng-controller="SalaryDiagnosticsCtrl" ng-cloak>
   <div class="container">
     <div class="row text-center">
-      <h1>Locum Savings Calculator</h1>
+      <h1>Salary Diagnostics Tool for UK Doctors</h1>
     </div>
   </div>
 
@@ -32,13 +32,13 @@
 
         <form ng-submit="computeProfits()" class="form-horizontal">
           <div class="form-group">
-            <label class="col-lg-5 control-label"> Enter hourly compensation</label>
+            <label class="col-lg-5 control-label">Monthly salary (net)</label>
             <div class="col-lg-7">
               <input 
                 type="text" 
                 class="form-control" 
-                ng-model="hourlyRate" 
-                placeholder="Hourly compensation (GBP)"
+                ng-model="monthlySalary" 
+                placeholder="Month salary (net in GBP)"
                 ng-change="computeProfits()"/>
             </div>
           </div>
@@ -150,12 +150,12 @@
       $controllerProvider.allowGlobals();
     }]);
 
-    function LocumSavingsCtrl($scope, $http, $log) {
+    function SalaryDiagnosticsCtrl($scope, $http, $log) {
 
       $scope.earnings = {};
 
       $scope.computeProfits = function() {
-        var userRatio = $scope.hourlyRate * $scope.agencyPercentage;
+        var userRatio = $scope.monthlySalary * 1/40. * 12/52. * $scope.agencyPercentage;
         var savingsPerMin = userRatio * 1 / 60.;
         $scope.earnings.min = savingsPerMin;
         $scope.earnings.hour = $scope.earnings.min * 60;
