@@ -87,13 +87,7 @@
       <div class="col-lg-6">
         <h2>Summary </h2>
 
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th class="col-lg-4">Period</th>
-              <th class="col-lg-4 text-left">GBP</th>
-            </tr>
-          </thead>
+        <table class="table table-striped">            
           <tbody>
             <tr>
               <td>Grade</td>
@@ -101,12 +95,12 @@
             </tr>
              <tr>
               <td>Extra desired hours</td>
-              <td ng-bind="salary.earnings.extraHours"|number:2></td>
+              <td ng-bind="salary.earnings.extraHours | number:2"></td>
             </tr>
             
             <tr>
               <td>Current Monthly Net (GBP) </td>
-              <td ng-bind="monthly"></td>
+              <td ng-bind="$scope.monthlySalary"></td>
             </tr>
             
         
