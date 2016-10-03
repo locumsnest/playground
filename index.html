@@ -168,8 +168,8 @@
         $scope.earnings.extraHours = $scope.maxHoursPerWeek - $scope.hoursPerWeek;
         $scope.earnings.locumEarnings = $scope.earnings.month * $scope.earnings.extraHours / $scope.hoursPerWeek;
         $scope.earnings.locumEarningsWAgency = $scope.earnings.locumEarnings * (1.0-$scope.agencyPercentage);
-        $scope.earnings.monthlyLA = $scope.earnings.locumEarningsWAgency;
-        $scope.earnings.monthlyL = $scope.earnings.locumEarnings;
+        $scope.earnings.monthlyLA = Number($scope.month || 0) + Number($scope.earnings.locumEarningsWAgency || 0);
+        $scope.earnings.monthlyL = Number($scope.month || 0) + Number($scope.earnings.locumEarnings || 0);
         $scope.earnings.extraIncomeYear =  $scope.earnings.locumEarnings * 12.;
       };
 
