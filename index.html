@@ -95,19 +95,19 @@
             </tr>
             <tr>
               <td>Current hours</td>
-              <td ng-bind="Number(hoursPerWeek || 0) | number:2"></td>
+              <td ng-bind="hoursPerWeek | number:2"></td>
             </tr>
             <tr>
               <td>Max desired hours</td>
-              <td ng-bind="Number(maxHoursPerWeek || 0) | number:2"></td>
+              <td ng-bind="maxHoursPerWeek | number:2"></td>
             </tr>
             <tr>
               <td>Extra desired hours</td>
-              <td ng-bind="Number(earnings.extraHours || 0) | number:2"></td>
+              <td ng-bind="earnings.extraHours | number:2"></td>
             </tr>
             <tr>
               <td>Current Monthly Net (GBP) </td>
-              <td ng-bind="Number(monthlySalary || 0)| number:2"></td>
+              <td ng-bind="monthlySalary | number:2"></td>
             </tr>    
             <tr>
               <td>Estimated Monthly Net with locums (agency placed) (GBP)</td>
@@ -170,7 +170,7 @@
         $scope.earnings.locumEarningsWAgency = $scope.earnings.locumEarnings * (1.0-$scope.agencyPercentage);
         $scope.earnings.monthlyLA = Number($scope.earnings.month || 0) + Number($scope.earnings.locumEarningsWAgency || 0);
         $scope.earnings.monthlyL = Number($scope.earnings.month || 0) + Number($scope.earnings.locumEarnings || 0);
-        $scope.earnings.extraIncomeYear =  Number($scope.earnings.locumEarnings||0) * 12.;
+        $scope.earnings.extraIncomeYear =  $scope.earnings.locumEarnings * 12.;
       };
 
       $scope.updateGrade = function() {
