@@ -110,11 +110,11 @@
               <td ng-bind="monthlySalary | number:2"></td>
             </tr>    
             <tr>
-              <td>Estimated Monthly Net from locums (agency placed) (GBP)</td>
+              <td>Estimated Monthly Net with locums (agency placed) (GBP)</td>
               <td ng-bind="earnings.monthlyLA | number:2"></td>
             </tr>     
             <tr>
-              <td>Estimated Monthly Net  from locums (without agency)* (GBP)</td>
+              <td>Estimated Monthly Net  with locums (without agency)* (GBP)</td>
               <td ng-bind="earnings.monthlyL | number:2"></td>
             </tr>
             <tr>
@@ -168,8 +168,8 @@
         $scope.earnings.extraHours = $scope.maxHoursPerWeek - $scope.hoursPerWeek;
         $scope.earnings.locumEarnings = $scope.earnings.month * $scope.earnings.extraHours / $scope.hoursPerWeek;
         $scope.earnings.locumEarningsWAgency = $scope.earnings.locumEarnings * (1.0-$scope.agencyPercentage);
-        $scope.earnings.monthlyLA = $scope.earnings.locumEarningsWAgency;
-        $scope.earnings.monthlyL = $scope.earnings.locumEarnings;
+        $scope.earnings.monthlyLA = $scope.earnings.month--$scope.earnings.locumEarningsWAgency;
+        $scope.earnings.monthlyL = $scope.earnings.month--$scope.earnings.locumEarnings;
         $scope.earnings.extraIncomeYear =  $scope.earnings.locumEarnings * 12.;
       };
 
