@@ -159,7 +159,7 @@
         $scope.agencyPercentage = 0.15
         var userRatio = $scope.monthlySalary * 1/40. * 12/52. * $scope.agencyPercentage;
         var savingsPerMin = userRatio * 1 / 60.;
-        $scope.earnings.month = $scope.monthlySalary;
+        $scope.earnings.month = Number($scope.monthlySalary || 0);
         $scope.earnings.min = savingsPerMin;
         $scope.earnings.hour = $scope.earnings.min * 60;
         $scope.earnings.day = $scope.earnings.hour * 8;
@@ -168,8 +168,8 @@
         $scope.earnings.extraHours = $scope.maxHoursPerWeek - $scope.hoursPerWeek;
         $scope.earnings.locumEarnings = $scope.earnings.month * $scope.earnings.extraHours / $scope.hoursPerWeek;
         $scope.earnings.locumEarningsWAgency = $scope.earnings.locumEarnings * (1.0-$scope.agencyPercentage);
-        $scope.earnings.monthlyLA = Number($scope.month || 0) + Number($scope.earnings.locumEarningsWAgency || 0);
-        $scope.earnings.monthlyL = Number($scope.month || 0) + Number($scope.earnings.locumEarnings || 0);
+        $scope.earnings.monthlyLA = Number($scope.earnings.month || 0) + Number($scope.earnings.locumEarningsWAgency || 0);
+        $scope.earnings.monthlyL = Number($scope.earnings.month || 0) + Number($scope.earnings.locumEarnings || 0);
         $scope.earnings.extraIncomeYear =  $scope.earnings.locumEarnings * 12.;
       };
 
