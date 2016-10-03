@@ -1,5 +1,5 @@
 <html ng-app="ether">
-  <title>Salary Diagnostics</title>
+  <title>Salary Diagnostics Tool</title>
   
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
@@ -95,34 +95,32 @@
             </tr>
             <tr>
               <td>Current hours</td>
-              <td ng-bind="hoursPerWeek | number:2"></td>
+              <td ng-bind="hoursPerWeek | number:0"></td>
             </tr>
             <tr>
               <td>Max desired hours</td>
-              <td ng-bind="maxHoursPerWeek | number:2"></td>
+              <td ng-bind="maxHoursPerWeek | number:0"></td>
             </tr>
             <tr>
               <td>Extra desired hours</td>
-              <td ng-bind="earnings.extraHours | number:2"></td>
+              <td ng-bind="earnings.extraHours | number:0"></td>
             </tr>
             <tr>
               <td>Current Monthly Net (GBP) </td>
-              <td ng-bind="monthlySalary | number:2"></td>
+              <td ng-bind="monthlySalary | number:0"></td>
             </tr>    
             <tr>
               <td>Estimated Monthly Net from locums (agency placed) (GBP)</td>
-              <td ng-bind="earnings.monthlyLA | number:2"></td>
+              <td ng-bind="earnings.monthlyLA | number:0"></td>
             </tr>     
             <tr>
               <td>Estimated Monthly Net  from locums (without agency)* (GBP)</td>
-              <td ng-bind="earnings.monthlyL | number:2"></td>
+              <td ng-bind="earnings.monthlyL | number:0"></td>
             </tr>
             <tr>
               <td>Max estimated yearly income boost (GBP)</td>
-              <td ng-bind="earnings.extraIncomeYear | number:2"></td>
+              <td ng-bind="earnings.extraIncomeYear | number:0"></td>
             </tr>
-            
-            
           </tbody>
         </table>
       </div>
